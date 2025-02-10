@@ -1,5 +1,5 @@
 export default {
     server: {
-        base: '/test/'
+        base: '/portfolio/'
     }
 }
