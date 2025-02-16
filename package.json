@@ -4,6 +4,9 @@
   "version": "0.0.0",
   "homepage": "https://peterson2071.github.io.portfolio/",
   "type": "module",
+  "browser": {
+    "child_process": false
+  },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
