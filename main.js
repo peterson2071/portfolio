@@ -37,7 +37,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 const spaceTexture = new THREE.TextureLoader().load('/assets/images/81792_01_astronomers-find-two-hidden-galaxies-at-the-edge-of-space-and-time_full.png');
 scene.background = spaceTexture;
 
-const sunTexture = new THREE.TextureLoader().load('./ezgif.com-webp-to-jpg.jpg')
+const sunTexture = new THREE.TextureLoader().load('/assets/images/ezgif.com-webp-to-jpg.jpg')
 const sun = new THREE.Mesh(
   new THREE.SphereGeometry(3, 45, 45), 
   new THREE.MeshStandardMaterial({map: sunTexture})
