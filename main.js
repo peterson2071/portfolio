@@ -1,5 +1,5 @@
-import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import * as THREE from './node_modules/three';
+import { OrbitControls } from './node_modules/three/examples/jsm/controls/OrbitControls';
 import './vite.config.js';
 
 
@@ -14,7 +14,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
 
-const geometry = new THREE.IcosahedronGeometry(10, 3, 16, 100);
+const geometry = new THREE.IcosahedronGeometry(5, 1, 8, 50);
 const material = new THREE.MeshBasicMaterial({color: 0x216285, wireframe: true});
 const icosahedron = new THREE.Mesh(geometry, material);
 
@@ -35,12 +35,20 @@ scene.add(lightHelper, gridHelper);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 const spaceTexture = new THREE.TextureLoader().load('image.png');
+const mtr = new THREE.SpriteMaterial({map: spaceTexture, color: 0x000000});
+const sprite = new THREE.Sprite(mtr);
+const world = sprite.getWorldScale(scene);
+sprite.scale.set(world);
+camera.position.set(0, 10, 0);
+
 scene.background = spaceTexture;
 
-const sunTexture = new THREE.TextureLoader().load('ezgif.com-webp-to-jpg.jpg')
+const sunTexture = new THREE.TextureLoader().load('ezgif.com-webp-to-jpg.jpg');
+const sphere = new THREE.SphereGeometry(5, 200, 200);
+const basic = new THREE.MeshBasicMaterial({map: sunTexture})
 const sun = new THREE.Mesh(
-  new THREE.SphereGeometry(3, 45, 45), 
-  new THREE.MeshStandardMaterial({map: sunTexture})
+  sphere,
+  basic
 );
 
 scene.add(sun);
