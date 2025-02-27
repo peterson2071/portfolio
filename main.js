@@ -1,5 +1,6 @@
-import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+
+import * as THREE from './node_modules/three';
+import { OrbitControls } from './node_modules/three/examples/jsm/controls/OrbitControls';
 import './vite.config.js';
 
 
@@ -34,7 +35,7 @@ scene.add(lightHelper, gridHelper);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
-const spaceTexture = new THREE.TextureLoader().loadAsync('/workspaces/portfolio/image.png')
+const spaceTexture = new THREE.TextureLoader().loadAsync('/portfolio/image.png')
 const mtr = new THREE.SpriteMaterial({map: spaceTexture});
 const sprite = new THREE.Sprite(mtr);
 const world = sprite.getWorldScale(scene);
@@ -42,9 +43,8 @@ sprite.scale.set(world);
 camera.position.set(0, 10, 0);
 scene.background = spaceTexture;
 
-const sunTexture = new THREE.TextureLoader().load('/workspaces/portfolio/sun.jpg');
 const sphere = new THREE.SphereGeometry(5, 200, 200);
-const basic = new THREE.MeshBasicMaterial({map: sunTexture})
+const basic = new THREE.MeshBasicMaterial({color: 'orange'});
 const sun = new THREE.Mesh(
   sphere,
   basic
